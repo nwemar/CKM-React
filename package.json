@@ -2,15 +2,9 @@
   "name": "first",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
   "engines": {
         "node": ">=6.0.0"
-      },
-=======
-  "engines": { 
-   "node": "16.13.2" 
  } ,
->>>>>>> 80c68d6feadfd9976b45fe1fe7cc9ba2b8a34ba9
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
