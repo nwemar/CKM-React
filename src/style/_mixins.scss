@@ -1,0 +1,12 @@
+ // respond is the name of your mixin
+
+ @mixin respond ($breakpoint) {
+
+     // $breakpoint is simply a variable that can have several values
+
+     @if $breakpoint==mobile {
+         @media (max-width: 768px) {
+             @content;
+         }
+     }
+ }

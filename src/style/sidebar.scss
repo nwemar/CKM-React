@@ -1,0 +1,21 @@
+.sidebar {
+    margin: 0;
+    padding: 0%;
+    // width: 20%;
+    // background-color: #f1f1f1;
+    position: relative;
+    overflow: auto;
+
+    a {
+        display: block;
+        color: black;
+        padding: 5% 5% 5% 7%;
+        text-decoration: none;
+
+
+        &:hover {
+            background-color: #555;
+            color: white;
+        }
+    }
+}

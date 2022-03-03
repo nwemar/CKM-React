@@ -1,0 +1,57 @@
+@import './mixins.scss';
+
+.customModal {
+    width: 35%;
+
+    .h2_center {
+        text-align: center;
+
+        .button-size {
+            font-weight: bold;
+            width: 20%;
+            height: 30px;
+        }
+
+        .button {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .cancle-button {
+            background-color: #555555;
+            color: white;
+        }
+    }
+
+    .p-flex {
+        display: flex;
+        line-height: 2;
+        padding: 1%;
+        width: 100%;
+
+        .left-label-width {
+            width: 30%;
+            font-weight: bold;
+        }
+
+        .right-label-width {
+            width: 70%;
+        }
+
+        img {
+            width: 30%;
+        }
+    }
+}
+
+.customOverlay {
+    overlay: {
+        background: 'rgba(0, 0, 0, 0.1)',
+    }
+}
+
+@include respond(mobile) {
+    .customModal {
+        width: 80%;
+    }
+}

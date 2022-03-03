@@ -1,0 +1,33 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+html {
+  font-size: calc(10px + 0.5vw);
+  min-width: 320px;
+}
+
+body {
+  font-family: 'MPLUS 1p Medium';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'MPLUS 1p Medium';
+  src: url('../public/fonts/MPLUS1p-Medium.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'MPLUS 1p Bold';
+  src: url('../public/fonts/MPLUS1p-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'MPLUS 1p Black';
+  src: url('../public/fonts/MPLUS1p-Black.ttf');
+  font-weight: 900;
+}

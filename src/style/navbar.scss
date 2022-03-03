@@ -1,0 +1,64 @@
+@import './_mixins.scss';
+@import './_variable.scss';
+
+/** HEADER */
+
+/** Navigation Bar */
+.nav {
+  display: flex;
+
+  .nav-header {
+    // padding: 0.5%;
+    margin-left: 15%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+
+    span:after {
+      content: "Capital Knowledge";
+      font-family: 'MPLUS 1p Bold';
+      font-size: 1.4rem;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-family: 'MPLUS 1p Bold';
+    width: 70%;
+
+    a {
+      padding: 2%;
+      text-decoration: none;
+      color: $text-color;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+
+  @include respond(mobile) {
+    // display: grid;
+    // text-align: center;
+
+    .nav-header {
+      padding: 1%;
+      margin-left: 0%;
+
+      span:after {
+        content: "CKM";
+      }
+    }
+
+    // .nav-links {
+    //   padding-left: 0%;
+
+    //   a {
+    //     padding: 1%
+    //   }
+    // }
+  }
+
+}

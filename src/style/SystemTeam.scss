@@ -1,0 +1,26 @@
+@import './mixins.scss';
+
+.SystemTeam {
+    text-justify: inter-word;
+    line-height: 2;
+
+    h2 {
+        border-bottom: 2px solid #20c997;
+        text-align: center;
+    }
+
+    p::first-letter {
+        font-size: 1.5rem;
+    }
+
+    ul {
+        padding-left: 2%;
+    }
+
+    @include respond(mobile) {
+        ul {
+            padding-left: 7%;
+        }
+    }
+
+}
