@@ -14,7 +14,6 @@ const navbar = (props) => {
       <div className='nav-links'>
         <NavLink to="/" >Home</NavLink>
         <NavLink to="/About" >About</NavLink>
-        <a href='#'>Contact</a>
         <NavLink to="/Logout" onClick={handleLogout}>Logout</NavLink>
       </div>
     </div >
