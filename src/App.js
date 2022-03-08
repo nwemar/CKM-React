@@ -1,5 +1,5 @@
 
-import React,{Suspense, useState } from 'react';
+import React,{Suspense, useState,useEffect } from 'react';
 import './App.css';
 import { Routes ,Route,useNavigate   } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -14,6 +14,8 @@ import Sidebar from './component/sidebar';
 // import SystemTeam from './component/SystemTeam';
 // import Csharp from './component/Csharp';
 
+import LoginValidate from './component/LoginValidate';
+
  import Login from './component/Login';
 // import PHP from './component/PHP';
 const About = React.lazy(() => import('./component/About'));
@@ -23,9 +25,13 @@ const SystemTeam = React.lazy(() => import('./component/SystemTeam'));
 const Csharp = React.lazy(() => import('./component/Csharp'));
 const PHP = React.lazy(() => import('./component/PHP'));
 
+
+
 function App() {
+  const [formErrors, setFormErrors]=useState({});
+  const [validErrors, setValidErrors]=useState();
   const [loginSuccess, setLoginSuccess]=useState(false);
-   const Csharp_data = useSelector(state => state.CSharp_Call_Reducer.csharpmembers);
+  const Csharp_data = useSelector(state => state.CSharp_Call_Reducer.csharpmembers);
   const PHP_data = useSelector(state => state.PHP_Call_Reducer.phpmembers);
 
    const [loginformData, setLoginFormData] = useState(
@@ -38,37 +44,42 @@ function App() {
         const { value, id } = e.target;
 
         setLoginFormData({ ...loginformData, [id]: value })
+        setFormErrors(LoginValidate(loginformData));
+        setValidErrors("");
     }
     const navigate = useNavigate();
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-      
+        setFormErrors(LoginValidate(loginformData));
+         
         const csharp_Item = Csharp_data.filter((c) => c.loginname === loginformData.loginname && c.password === loginformData.password);
 
         if (csharp_Item.length === 0) {
+           
             const php_Item = PHP_data.filter((p) => p.loginname === loginformData.loginname && p.password === loginformData.password);
 
             if (php_Item.length === 0) {
                 setLoginSuccess(false);
-                alert("Login Fail");
+                setValidErrors("Login Name and Passwor is not valid!");
             }
             else {
                setLoginSuccess(true);
-                alert("login Success!");
                 navigate('/')
             }
         }
-        else {
-            setLoginSuccess(true);
+        else {           
+             setLoginSuccess(true);
              navigate('/')
         }
     }
+
     const handleLogout=()=>{
        setLoginSuccess(false);
+       setLoginFormData("");
     }
   return (
     <div className='page-container'>
-       {loginSuccess === false ? <Login onChange={onLoginChange} handleLoginSubmit={handleLoginSubmit} /> : <Suspense fallback={<div>Loading...</div>}>
+       {loginSuccess === false ? <Login onChange={onLoginChange} handleLoginSubmit={handleLoginSubmit} errors={formErrors} checkErrors={validErrors} /> : <Suspense fallback={<div>Loading...</div>}>
       <div className='content-wrap'>         
         <Navbar handleLogout={handleLogout}> </Navbar>
         <Logoimage> </Logoimage>        
@@ -83,7 +94,7 @@ function App() {
             <Route  path="/ckmgroups" element={<Ckmgroups/>}></Route>
             <Route  path="/SystemTeam" element={<SystemTeam/>}></Route>
             <Route  path="/CSharp" element={<Csharp/>}></Route>
-             <Route  path="/PHP" element={<PHP/>}></Route>
+            <Route  path="/PHP" element={<PHP/>}></Route>
             <Route  path="/ReactTeam" element={<ReactTeam/>}></Route>
             </Routes>
         </div>
