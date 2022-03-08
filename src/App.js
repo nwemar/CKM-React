@@ -60,7 +60,7 @@ function App() {
 
             if (php_Item.length === 0) {
                 setLoginSuccess(false);
-                setValidErrors("Login Name and Passwor is not valid!");
+                setValidErrors("Login Name and Password is not valid!");
             }
             else {
                setLoginSuccess(true);
