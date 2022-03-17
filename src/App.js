@@ -17,6 +17,7 @@ import Sidebar from './component/sidebar';
 import LoginValidate from './component/LoginValidate';
 
  import Login from './component/Login';
+
 // import PHP from './component/PHP';
 const About = React.lazy(() => import('./component/About'));
 const ReactTeam = React.lazy(() => import('./component/ReactTeam'));
@@ -24,6 +25,7 @@ const Ckmgroups = React.lazy(() => import('./component/ckmgroups'));
 const SystemTeam = React.lazy(() => import('./component/SystemTeam'));
 const Csharp = React.lazy(() => import('./component/Csharp'));
 const PHP = React.lazy(() => import('./component/PHP'));
+const Inquery = React.lazy(() => import('./component/Inquery'));
 
 
 
@@ -91,6 +93,7 @@ function App() {
             <Routes>
             <Route exact path="/"  element={<Home/>}></Route>
             <Route  path="/About" element={<About/>}></Route>
+            <Route  path="/Inquery" element={<Inquery/>}></Route>
             <Route  path="/ckmgroups" element={<Ckmgroups/>}></Route>
             <Route  path="/SystemTeam" element={<SystemTeam/>}></Route>
             <Route  path="/CSharp" element={<Csharp/>}></Route>

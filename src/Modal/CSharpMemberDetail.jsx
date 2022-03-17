@@ -49,7 +49,8 @@ const CSharpMemberDetail = (props) => {
         </p>
         <p className="p-flex">
             <label className="left-label-width">Photo: </label>
-            <label className="right-label-width"><img src={getMember.photo} /></label>
+            {/* <label className="right-label-width"><img src={getMember.photo} /></label> */}
+            <label className="right-label-width"><img src={`data:image/jpeg;base64,${getMember.photo64}`} /></label>
         </p>
     </>
 

@@ -14,6 +14,7 @@ const navbar = (props) => {
       <div className='nav-links'>
         <NavLink to="/" >Home</NavLink>
         <NavLink to="/About" >About</NavLink>
+        <NavLink to="/Inquery" >Inquery</NavLink>
         <NavLink to="/Logout" onClick={handleLogout}>Logout</NavLink>
       </div>
     </div >

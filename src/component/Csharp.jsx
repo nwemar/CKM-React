@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import '../style/Csharp.scss';
-
-// import ModalBox from '../Modal/ModalBox';
-import { useDispatch } from 'react-redux'
-// import CSharpEditMember from '../Modal/CSharpEditMember';
-// import CSharpNewMember from '../Modal/CSharpNewMember';
-// import CSharpMemberDetail from '../Modal/CSharpMemberDetail';
+import { useDispatch } from 'react-redux';
 
 const ModalBox = React.lazy(() => import('../Modal/ModalBox'));
 const CSharpMemberDetail = React.lazy(() => import('../Modal/CSharpMemberDetail'));
@@ -46,6 +41,7 @@ const Csharp = (csharpmembers) => {
             gender: "",
             address: "",
             photo: "",
+            photo64: "",
         });
 
     const EditCSharpMember = (id, key) => {
@@ -69,9 +65,20 @@ const Csharp = (csharpmembers) => {
     }
     const onChange = (e) => {
         const { value, id } = e.target;
-
         setFormData({ ...formData, [id]: value })
     }
+    const imageSelectHandler = (e) => {
+        let base64String = "";
+        var reader = new FileReader();
+        reader.onload = function () {
+            base64String = reader.result.replace("data:", "")
+                .replace(/^.+,/, "");
+            setFormData({ ...formData, [e.target.id]: base64String })
+        }
+
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
     const dispatch = useDispatch(csharpmembers);
     const handleFormSubmit = () => {
         if (formData.id) {
@@ -107,7 +114,11 @@ const Csharp = (csharpmembers) => {
                                 <td>{contact.name}</td>
                                 <td>{contact.email}</td>
                                 <td>{contact.phonenumber}</td>
-                                <td className='image-td'><img src={contact.photo} /></td>
+                                <td className='image-td'>
+                                    {/* <div className='tbl-div-image'> */}
+                                    <img src={`data:image/jpeg;base64,${contact.photo64}`} />
+                                    {/* </div> */}
+                                </td>
                                 <td>
 
                                     <button onClick={() => ShowDetail(contact.id, key)}>
@@ -126,7 +137,7 @@ const Csharp = (csharpmembers) => {
                 </tbody>
             </table>
             <ModalBox DetailModalopen={open} handleClose={handleClose}>
-                {getStatus === 'Show' ? <CSharpMemberDetail getMember={getMember} /> : <CSharpNewMember data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} handleClose={handleClose} />}
+                {getStatus === 'Show' ? <CSharpMemberDetail getMember={getMember} /> : <CSharpNewMember data={formData} onChange={onChange} imageSelectHandler={imageSelectHandler} handleFormSubmit={handleFormSubmit} handleClose={handleClose} />}
             </ModalBox>
         </div >
     )

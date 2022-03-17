@@ -3,7 +3,7 @@ import '../style/login.scss';
 
 export const Login = (props) => {
     const { onChange, handleLoginSubmit, errors, checkErrors } = props;
-    console.log(checkErrors);
+
     return (
 
         <div className="login">
